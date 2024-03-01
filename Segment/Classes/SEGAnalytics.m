@@ -100,7 +100,7 @@ static SEGAnalytics *__sharedInstance = nil;
 
 #if !TARGET_OS_TV
         if (configuration.trackPushNotifications && configuration.launchOptions) {
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS || TARGET_OS_VISION
             NSDictionary *remoteNotification = configuration.launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
 #else
             NSDictionary *remoteNotification = configuration.launchOptions[NSApplicationLaunchUserNotificationKey];

@@ -255,11 +255,18 @@ NSDictionary *mobileSpecifications(SEGAnalyticsConfiguration *configuration, NSS
         @"version" : device.systemVersion
     };
 
+#if TARGET_OS_VISION
+    dict[@"screen"] = @{
+        @"width" : @(1280),
+        @"height" : @(720)
+    };
+#else
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     dict[@"screen"] = @{
         @"width" : @(screenSize.width),
         @"height" : @(screenSize.height)
     };
+#endif
     
     // BKS: This bit below doesn't seem to be effective anymore.  Will investigate later.
     /*#if !(TARGET_IPHONE_SIMULATOR)
